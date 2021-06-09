@@ -15,8 +15,8 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+    return {name: name, price: price, category: category};
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -28,6 +28,11 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+
+//console.log(createMenuItem("Pizza", 5, "Lunch"));
+//console.log(createMenuItem("Waffles", 3, "Breakfast"));
+//console.log(createMenuItem("Italian Sub", 5, "Lunch"));
+
 
 
 
@@ -48,7 +53,16 @@ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function(a) {
+    if(a === "teacher" || a === "student") {
+      this.price = 18;
+      this.price = this.price - (this.price * .25);
+    } else  {
+      this.price = 18;
+      this.price = this.price - (this.price * .10);
+    }
+    return this.price;
+  }
 }
 
 
@@ -69,7 +83,7 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+//console.log(reviews[5].feedback);
 
 
 
@@ -79,6 +93,11 @@ Using the reviews array above do the following: (no function needed)
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
+reviews.push({
+  name: "Joey", rating: 5, feedback: "random text"
+})
+
+//console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -86,6 +105,9 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
   1. Add this feedback to Reyna's rating - "this place is chill with really cool people, great for getting work done on weekdays"
   2. log the reviews array to the console to check your work
 */
+
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
+//console.log(reviews);
 
 
 
@@ -102,8 +124,8 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, index) {
+  return `${array[index].name} gave the restaurant a ${array[index].rating} star review, and their feedback was: ${array[index].feedback}`
 }
 
 
@@ -121,8 +143,10 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array) {
+  const lastIndex = array[array.length - 1];
+
+  return `${lastIndex.name} gave the restaurant a ${lastIndex.rating} star review, and their feedback was: ${lastIndex.feedback}`
 } 
 
 
