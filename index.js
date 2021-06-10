@@ -55,13 +55,11 @@ export const burger = {
   category: "Lunch", 
   discount: function(a) {
     if(a === "teacher" || a === "student") {
-      this.price = 18;
-      this.price = this.price - (this.price * .25);
+      this.discountedPrice = this.price - (this.price * .25);
     } else  {
-      this.price = 18;
-      this.price = this.price - (this.price * .10);
+      this.discountedPrice = this.price - (this.price * .10);
     }
-    return this.price;
+    return this.discountedPrice;
   }
 }
 
@@ -167,9 +165,15 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+function getReviewByRating(array, rating) {
+  const ratings = [];
+    for(x in array) {
+      if(array[x].rating >= rating && array[x].rating <= rating + .9) {
+        ratings.push(array[x]);
+      }
   }
+  return ratings;
+}
 
   
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
@@ -185,9 +189,16 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-    /* code here */
+function getLongReviews(array) {
+  const longFeedback = [];
+  for(x in array) {
+    let howManyWords = array[x].feedback.split(' ');
+    if(howManyWords.length >= 15) {
+      longFeedback.push(array[x]);
+    }
   }
+  return longFeedback;
+}
   
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
@@ -208,9 +219,15 @@ Use the carMaker function below to do the following:
 */
 
 
-function carMaker(/* code here */) {
-    /* code here */
-    
+function carMaker(initialOdometer) {
+  const myCar = {
+    odometer: initialOdometer,
+    drive: function (miles) {
+      this.odometer += miles;
+      return this.odometer;
+    }
+};
+  return myCar;
 }
 
 
